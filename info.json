@@ -1,0 +1,12 @@
+{
+    "name": "Icethrower",
+    "version": "0.1.0",
+    "title": "Icethrower",
+    "author": "MaveTheMaverick",
+    "factorio_version": "1.1",
+    "dependencies": [
+        "base >= 1.1.0",
+        "? Cold_biters"
+    ],
+    "description": "Turret that fires supercooled liquid to slow enemies"
+}
