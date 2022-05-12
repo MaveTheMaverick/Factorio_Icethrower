@@ -6,7 +6,8 @@
     "factorio_version": "1.1",
     "dependencies": [
         "base >= 1.1.0",
-        "? Cold_biters"
+        "? Cold_biters",
+        "? space-exploration"
     ],
     "description": "Turret that fires supercooled liquid to slow enemies"
 }

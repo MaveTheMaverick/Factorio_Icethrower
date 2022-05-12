@@ -77,11 +77,11 @@ local icethrower_entity = {
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "icethrower-turret"},
-    max_health = 1400,
+    max_health = data.raw["fluid-turret"]["flamethrower-turret"].max_health,
     corpse = "flamethrower-turret-remnants",
     collision_box = {{-0.7, -1.2 }, {0.7, 1.2}},
     selection_box = {{-1, -1.5 }, {1, 1.5}},
-    rotation_speed = 0.015,
+    rotation_speed = 0.003,
     preparing_speed = 0.08,
     --preparing_sound = sounds.flamethrower_turret_activate,
     --folding_sound = sounds.flamethrower_turret_deactivate,
@@ -507,13 +507,16 @@ local icethrower_entity = {
       min_range = 6,
 
       turn_range = 1.0 / 3.0,
-      fire_penalty = 15,
+      fire_penalty = 20,
+      health_penalty = -15,
 
       -- lead_target_for_projectile_speed = 0.2* 0.75 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
 
       fluids =
       {
         {type = "water"},
+        -- Adds Cryonite Slush from Space Exploration as ammo
+        -- Adds Alien Cold Extract from Frost Biters as ammo
       },
       fluid_consumption = 0.2,
 
@@ -536,54 +539,7 @@ local icethrower_entity = {
         }
       },
 
-      cyclic_sound =
-      {
-        begin_sound =
-        {
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-start-01.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-start-02.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-start-03.ogg",
-            volume = 0.5
-          }
-        },
-        middle_sound =
-        {
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-mid-01.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-mid-02.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-mid-03.ogg",
-            volume = 0.5
-          }
-        },
-        end_sound =
-        {
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-end-01.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-end-02.ogg",
-            volume = 0.5
-          },
-          {
-            filename = "__base__/sound/fight/flamethrower-turret-end-03.ogg",
-            volume = 0.5
-          }
-        }
-      }
+      cyclic_sound = table.deepcopy(data.raw["fluid-turret"]["flamethrower-turret"].attack_parameters.cyclic_sound)
     }, -- {0,  0.625}
     call_for_help_radius = 40
 }
